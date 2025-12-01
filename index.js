@@ -1,42 +1,52 @@
-// Örnek ürün listesi (resim dosyalarını kendin eklemelisin)
 const urunler = [
-  { ad: "Dior Allık", fiyat: 4190, resim: em },
-  { ad: "Lenovo ThinkPad", fiyat: 18000, resim: "img/thinkpad.jpg" },
-  { ad: "HP Pavilion", fiyat: 14000, resim: "img/hp.jpg" },
-  { ad: "Asus Vivobook", fiyat: 11500, resim: "img/asus.jpg" },
-  { ad: "Acer Aspire", fiyat: 9500, resim: "img/acer.jpg" },
+  { ad: "Dior Allık", fiyat: 4190, resim: "img/dior.jpeg" },
+  {
+    ad: "Victoria's Secret Bombshell",
+    fiyat: 5000,
+    resim: "img/bombshell2.jpg",
+  },
+  { ad: "Kiko Milano Glos", fiyat: 2000, resim: "img/kiko.jpeg" },
+  {
+    ad: "Maybelline New York Kapatıcı",
+    fiyat: 1500,
+    resim: "img/kapaatıcı.jpg",
+  },
+  { ad: "YSL Mascara", fiyat: 9500, resim: "img/maskara.jpg" },
+  {
+    ad: "Rare Beauty Highlighter",
+    fiyat: 1500,
+    resim: "img/aydınlatıcı.jpeg",
+  },
+  { ad: "Chanel Pudra", fiyat: 2950, resim: "img/pudra.jpg" },
+  { ad: "Estee Lauder Fondöten", fiyat: 3000, resim: "img/fondoten.jpg" },
+  { ad: "Note Far Paleti", fiyat: 1200, resim: "img/far.jpg" },
+  { ad: "MAC Bronzer", fiyat: 3500, resim: "img/bronzer.jpeg" },
+  { ad: "Advent Calendar", fiyat: 65000, resim: "img/set.jpg" },
 ];
 
 function olustur() {
   const adet = Number(document.getElementById("adet").value);
   const alan = document.getElementById("kartAlani");
 
-  // Eski kartları temizle
   alan.innerHTML = "";
 
-  // Kullanıcı yanlış sayı girdiyse uyar
   if (adet < 1 || adet > urunler.length) {
     alan.innerHTML = `<p>Lütfen 1 ile ${urunler.length} arasında bir değer giriniz.</p>`;
     return;
   }
 
-  // Kartları oluştur
   for (let i = 0; i < adet; i++) {
     const urun = urunler[i];
-
-    // Pahalı ürün kontrolü
     const kartClass = urun.fiyat > 10000 ? "kart pahali" : "kart";
 
-    // Kart HTML'i
     const kart = `
-            <div class="${kartClass}">
-                <img src="${urun.resim}" alt="${urun.ad}">
-                <h3>${urun.ad}</h3>
-                <p>${urun.fiyat} TL</p>
-            </div>
-        `;
+      <div class="${kartClass}">
+        <img src="${urun.resim}" alt="${urun.ad}">
+        <h3>${urun.ad}</h3>
+        <p>${urun.fiyat} TL</p>
+      </div>
+    `;
 
-    // Sayfaya ekle
     alan.innerHTML += kart;
   }
 }
